@@ -1,0 +1,18 @@
+.upper-container {
+  height: 50vh;
+}
+
+.profile-container {
+  height: 25vh;
+  background: linear-gradient(to left, #3eace4, #132433);
+}
+
+.img-container {
+  background: white;
+  width: 40vh;
+  height: 40vh;
+  border-radius: 50%;
+  padding: 5px;
+  transform: translate(0px, 5vh);
+  border: 3px solid #3eace4;
+}
