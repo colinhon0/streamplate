@@ -10,7 +10,7 @@ export default function EditImage () {
   
   return (
    <div style = {{ display:'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
-    <img className="img-container" src={img} alt = '' />
+    <img className="edit-container" src={img} alt = 'https://media.csesoc.org.au/content/images/2021/01/92174391_1408417722696600_2578155957393555456_n---Colin-Hon.jpg' />
       <Fab component="label">
         <AddPhotoAlternateIcon />
         <input type="file" accept=".png, .jpeg" onChange={(e) => setImg(URL.createObjectURL(e.target.files[0]))} hidden/>
