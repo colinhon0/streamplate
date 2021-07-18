@@ -33,7 +33,7 @@ export default function ProfileCard() {
     setName(imgStored)
   }
   
-  const paperStyle = { padding: 0, height: '80vh', width: '90vw', margin: '20px auto' }
+  const paperStyle = { padding: 0, height: '70vh', width: '50vw', margin: '20px auto' }
 
   return (
     <Grid align = 'center'>

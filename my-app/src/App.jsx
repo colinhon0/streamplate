@@ -13,18 +13,20 @@ import Edit from './pages/Edit'
 
 function App() {
   return (
-    <Router>
-      <div>
-        <Switch>
-          <Route exact path="/">
-            <Profile />
-          </Route>
-          <Route exact path="/edit">
-            <Edit />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+    <div className='App'>
+      <Router>
+        <div>
+          <Switch>
+            <Route exact path="/">
+              <Profile />
+            </Route>
+            <Route exact path="/edit">
+              <Edit />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    </div>
   );
 }
 
