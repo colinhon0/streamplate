@@ -1,6 +1,5 @@
 import React from 'react';
 
-import EditImage from '../components/EditImage'
 import EmailInput from '../components/EmailInput'
 import PhoneInput from '../components/PhoneInput'
 import NameInput from '../components/NameInput'
@@ -8,18 +7,11 @@ import NameInput from '../components/NameInput'
 import { Grid, Paper } from '@material-ui/core'
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
 import Fab from "@material-ui/core/Fab";
 import AddPhotoAlternateIcon from "@material-ui/icons/AddPhotoAlternate";
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
-
-
-const useStyles = makeStyles((theme) => ({
-  margin: {
-    margin: theme.spacing(1),
-  },
-}));
+import { Redirect } from 'react-router-dom'
 
 function Alert (props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />
@@ -36,6 +28,7 @@ export default function EditCard() {
   const [lastName, setLastName] = React.useState('');
   const [img, setImg] = React.useState('https://media.csesoc.org.au/content/images/2021/01/92174391_1408417722696600_2578155957393555456_n---Colin-Hon.jpg')
   const [open, setOpen] = React.useState(false);
+  const [saved, setSaved] = React.useState(false);
 
   document.body.style.backgroundColor = '#132433'
   
@@ -47,7 +40,6 @@ export default function EditCard() {
   
   const saveChanges = () => {
     let valid = true
-    console.log(firstName)
     // Check input
     if (!firstName.match(/^[A-Z]+$/i)) {
       valid = false
@@ -59,9 +51,10 @@ export default function EditCard() {
     
     if (valid) {
       localStorage.setItem("img", img);
-      localStorage.setItem("name", firstName + lastName);
+      localStorage.setItem("name", firstName + ' ' + lastName);
       localStorage.setItem("number", number);
       localStorage.setItem("email", email);
+      setSaved(true);
     } else {
       setOpen(true)
     }
@@ -74,6 +67,10 @@ export default function EditCard() {
     setOpen(false);
   }
   
+  if (saved) {
+    return (<Redirect to = '/' />);
+  }
+  
   return (
     <Grid>
       <Paper elevation={20} style={paperStyle} padding={0}>
@@ -82,7 +79,7 @@ export default function EditCard() {
         
           <div style = {{ display:'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
             <img className="edit-container" src={img} alt = 'https://media.csesoc.org.au/content/images/2021/01/92174391_1408417722696600_2578155957393555456_n---Colin-Hon.jpg' />
-              <Fab component="label">
+              <Fab component="label" size="small">
                 <AddPhotoAlternateIcon />
                 <input type="file" accept=".png, .jpeg" onChange={(e) => setImg(URL.createObjectURL(e.target.files[0]))} hidden/>
               </Fab>

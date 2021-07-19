@@ -17,21 +17,23 @@ export default function ProfileCard() {
   const numberStored = localStorage.getItem("number")
   const imgStored = localStorage.getItem("img")
   
-  if (nameStored !== null) {
-    setName(nameStored)
-  }
-  
-  if (emailStored !== null) {
-    setName(emailStored)
-  }
-  
-  if (numberStored !== null) {
-    setName(numberStored)
-  }
-  
-  if (imgStored !== null) {
-    setName(imgStored)
-  }
+  React.useEffect(() => {
+    if (nameStored !== null) {
+      setName(nameStored)
+    }
+    
+    if (emailStored !== null) {
+      setEmail(emailStored)
+    }
+    
+    if (numberStored !== null) {
+      setNumber(numberStored)
+    }
+    
+    if (imgStored !== null) {
+      setImg(imgStored)
+    }
+  }, []); 
   
   const paperStyle = { padding: 0, height: '70vh', width: '50vw', margin: '20px auto' }
 
