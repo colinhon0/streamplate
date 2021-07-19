@@ -4,6 +4,7 @@ import '../style/ProfileCard.css'
 
 import { Grid, Paper } from '@material-ui/core'
 import Typography from '@material-ui/core/Typography';
+import { createTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
 
 export default function ProfileCard() {
     
@@ -16,6 +17,9 @@ export default function ProfileCard() {
   const emailStored = localStorage.getItem("email")
   const numberStored = localStorage.getItem("number")
   const imgStored = localStorage.getItem("img")
+  
+  let theme = createTheme();
+  theme = responsiveFontSizes(theme);
   
   React.useEffect(() => {
     if (nameStored !== null) {
@@ -46,9 +50,11 @@ export default function ProfileCard() {
           </div>
         </div>
         <div className="lower-container">
-          <Typography variant="h3"> {name} </Typography>
-          <Typography variant="h5"> {email} </Typography>
-          <Typography variant="h5"> {number} </Typography>
+          <ThemeProvider theme={theme}>
+            <Typography variant="h3"> {name} </Typography>
+            <Typography variant="h5"> {email} </Typography>
+            <Typography variant="h5"> {number} </Typography>
+          </ThemeProvider>
         </div>
       </Paper>
     </Grid>
